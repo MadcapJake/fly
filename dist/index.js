@@ -84,7 +84,7 @@ exports["default"] = _regeneratorRuntime.mark(function callee$0$0() {
         context$1$0.t1 = context$1$0.sent;
         context$1$0.t2 = { path: path };
         context$1$0.t3 = tasks;
-        context$1$0.t0.call.call(context$1$0.t0, context$1$0.t1).notify("fly_run", context$1$0.t2).start(context$1$0.t3);
+        context$1$0.t0.call.call(context$1$0.t0, context$1$0.t1).emit("fly_run", context$1$0.t2).start(context$1$0.t3);
 
       case 22:
       case "end":

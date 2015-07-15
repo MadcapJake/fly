@@ -241,7 +241,7 @@ var Fly = (function (_Emitter) {
               _iteratorError = undefined;
               context$3$0.prev = 3;
               _iterator = _getIterator([].concat(tasks).filter(function (task) {
-                return ~_Object$keys(_this4.host).indexOf(task) || !_this4.notify("task_not_found", { task: task });
+                return ~_Object$keys(_this4.host).indexOf(task) || !_this4.emit("task_not_found", { task: task });
               }));
 
             case 5:

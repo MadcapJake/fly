@@ -28,14 +28,14 @@ var Emitter = (function () {
       return this;
     }
   }, {
-    key: "notify",
+    key: "emit",
 
     /**
-     * Notify subscribers.
+     * Emit subscribers.
      * @param {String} name of event to emit
      * @param {Object} data to send
      */
-    value: function notify(name, obj) {
+    value: function emit(name, obj) {
       var _this = this;
 
       (this.events[name] || []).forEach(function (event) {
