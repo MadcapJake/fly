@@ -90,7 +90,7 @@ export default class Fly extends Emitter {
    * @param {Array:String} list of tasks to run on changes
    */
   watch (globs, tasks) {
-    this.notify("fly_watch").start(tasks)
+    this.emit("fly_watch").start(tasks)
       .then(() => _.watch(globs, { ignoreInitial: true })
         .on("all", () => this.start(tasks)))
     return this
@@ -108,16 +108,16 @@ export default class Fly extends Emitter {
         .concat(tasks)
         .filter((task) => {
           return ~Object.keys(this.host).indexOf(task)
-          || !this.notify("task_not_found", { task })
+          || !this.emit("task_not_found", { task })
       })) {
         const start = new Date()
-        this.notify("task_start", { task })
+        this.emit("task_start", { task })
         try {
           ret = yield this.tasks[task].call(this, ret)
-          this.notify("task_complete", {
+          this.emit("task_complete", {
             task, duration: (new Date()).getTime() - start
           })
-        } catch (error) { this.notify("task_error", { task, error }) }
+        } catch (error) { this.emit("task_error", { task, error }) }
       }
     })
   }

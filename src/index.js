@@ -25,7 +25,7 @@ export default function* () {
     } else {
       reporter
         .call(yield cli.spawn(path))
-        .notify("fly_run", { path })
+        .emit("fly_run", { path })
         .start(tasks)
     }
   }

@@ -12,11 +12,11 @@ export default class Emitter {
     return this
   }
   /**
-   * Notify subscribers.
+   * Emit subscribers.
    * @param {String} name of event to emit
    * @param {Object} data to send
    */
-  notify (name, obj) {
+  emit (name, obj) {
     (this.events[name] || []).forEach((event) => event.call(this, obj))
     return this
   }

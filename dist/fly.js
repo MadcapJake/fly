@@ -208,7 +208,7 @@ var Fly = (function (_Emitter) {
     value: function watch(globs, tasks) {
       var _this3 = this;
 
-      this.notify("fly_watch").start(tasks).then(function () {
+      this.emit("fly_watch").start(tasks).then(function () {
         return _.watch(globs, { ignoreInitial: true }).on("all", function () {
           return _this3.start(tasks);
         });
@@ -253,7 +253,7 @@ var Fly = (function (_Emitter) {
               task = _step.value;
               start = new Date();
 
-              this.notify("task_start", { task: task });
+              this.emit("task_start", { task: task });
               context$3$0.prev = 9;
               context$3$0.next = 12;
               return this.tasks[task].call(this, ret);
@@ -261,7 +261,7 @@ var Fly = (function (_Emitter) {
             case 12:
               ret = context$3$0.sent;
 
-              this.notify("task_complete", {
+              this.emit("task_complete", {
                 task: task, duration: new Date().getTime() - start
               });
               context$3$0.next = 19;
@@ -270,7 +270,7 @@ var Fly = (function (_Emitter) {
             case 16:
               context$3$0.prev = 16;
               context$3$0.t0 = context$3$0["catch"](9);
-              this.notify("task_error", { task: task, error: context$3$0.t0 });
+              this.emit("task_error", { task: task, error: context$3$0.t0 });
 
             case 19:
               _iteratorNormalCompletion = true;
